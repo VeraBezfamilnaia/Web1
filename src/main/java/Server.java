@@ -7,11 +7,19 @@ import java.util.concurrent.Executors;
 public class Server {
     private static final ExecutorService pool = Executors.newFixedThreadPool(64);
 
-    public static ServerSocket start(int port) throws IOException {
-        return new ServerSocket(port);
+    public void listen(int port) {
+        try {
+            var server = new ServerSocket(port);
+            while (true) {
+                var client = server.accept();
+                handle(client);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void handle(Socket socket) {
-        pool.execute(() -> Handler.handleRequest(socket));
+    private void handle(Socket client) {
+        pool.execute(() -> Handler.handleRequest(client));
     }
 }
