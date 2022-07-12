@@ -6,8 +6,8 @@ import java.nio.file.Path;
 public class Main {
     public static void main(String[] args) {
         var server = new Server();
-        server.addHandler("GET", "/messages", Main::handleImpl);
-        server.addHandler("POST", "/messages", Main::handleImpl);
+        server.addHandler("GET", "/messages.html", Main::handleImpl);
+        server.addHandler("POST", "/messages.html", Main::handleImpl);
         server.listen(9999);
     }
 
