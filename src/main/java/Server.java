@@ -41,7 +41,6 @@ public class Server {
                 final var out = new BufferedOutputStream(socket.getOutputStream())
         ) {
             Request request = Parser.parse(in, out);
-            System.out.println("REQUEST HERE");
             String method = request.getMethod();
             String path = request.getPath();
 
