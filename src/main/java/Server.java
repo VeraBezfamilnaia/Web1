@@ -5,7 +5,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Server {
-    private static final ExecutorService pool = Executors.newFixedThreadPool(64);
+    private static final int THREAD_POOL_SIZE = 64;
+    private static final ExecutorService pool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
     public void listen(int port) {
         try {
